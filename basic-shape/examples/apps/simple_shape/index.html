@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<title></title>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link type="text/css" rel="stylesheet" href="./css/example.css" />
+    <link type="text/css" rel="stylesheet" href="../../../css/contextmenu.css" />
+
+    <SCRIPT src="../../../lib/shifty.js"></SCRIPT>
+    <SCRIPT src="../../../lib/raphael.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-1.10.2.min.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.autoresize.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery-touch_punch.js"></SCRIPT>
+    <SCRIPT src="../../../lib/jquery.contextmenu.js"></SCRIPT>
+    <SCRIPT src="../../../lib/rgbcolor.js"></SCRIPT>
+    <SCRIPT src="../../../lib/canvg.js"></SCRIPT>
+    <SCRIPT src="../../../lib/Class.js"></SCRIPT>
+    <SCRIPT src="../../../lib/json2.js"></SCRIPT>
+    <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
+
+    <SCRIPT src="../../../src/draw2d-full.js"></SCRIPT>
+    <SCRIPT src="../../../src/Selection.js"></SCRIPT>
+
+<script type="text/javascript">
+$.namespace = function() {
+    var a=arguments, o=null, i, j, d;
+    for (i=0; i<a.length; i=i+1) {
+        d=a[i].split(".");
+        o=window;
+        for (j=0; j<d.length; j=j+1) {
+            o[d[j]]=o[d[j]] || {};
+            o=o[d[j]];
+        }
+    }
+    return o;
+};
+
+$(window).load(function () {
+
+
+  $.namespace("canvas");
+
+  var canvas = new draw2d.Canvas("gfx_holder");
+
+  canvas.add( new draw2d.shape.basic.Oval(),100,100);
+  canvas.add( new draw2d.shape.basic.Rectangle(),120,150);
+  
+  canvas.add( new draw2d.shape.node.Start(), 80,80);
+  canvas.add( new draw2d.shape.node.Start(), 50,50);
+
+  canvas.add( new draw2d.shape.node.End(), 150,150);
+  canvas.add( new draw2d.shape.node.End(), 350,250);
+
+});
+  console.log('here');
+  var writer = new draw2d.io.json.Writer();
+  writer.marshal(canvas, function(json){
+  // convert the json object into string representation
+  var jsonTxt = JSON.stringify(json,null,2);
+
+  // insert the json string into a DIV for preview or post
+  // it via ajax to the server....
+  // $("#json").text(jsonTxt);
+  console.log(jsonTxt);
+ });
+
+</script>
+
+</head>
+
+<body>
+<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px;">
+</div>
+
+<!--    <script type="text/javascript">// Create a JSON writer and convert it into a JSON-String representation.
+ //
+    console.log('here');
+ var writer = new draw2d.io.json.Writer();
+ writer.marshal(canvas, function(json){
+    // convert the json object into string representation
+    var jsonTxt = JSON.stringify(json,null,2);
+
+    // insert the json string into a DIV for preview or post
+    // it via ajax to the server....
+    // $("#json").text(jsonTxt);
+    console.log(jsonTxt);
+ });
+ </script> -->
+
+</body>
+</html>
