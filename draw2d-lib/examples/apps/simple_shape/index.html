@@ -21,39 +21,15 @@
     <SCRIPT src="../../../lib/json2.js"></SCRIPT>
     <SCRIPT src="../../../lib/pathfinding-browser.min.js"></SCRIPT>
 
-    <SCRIPT src="../../../src/draw2d-full.js"></SCRIPT>
-    <SCRIPT src="../../../src/Selection.js"></SCRIPT>
-
-</head>
-
-<body>
-<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px;">
-<input id="test_button" type="button" value="Save">
-</div>
-
-<!--    <script type="text/javascript">// Create a JSON writer and convert it into a JSON-String representation.
- //
-    console.log('here');
- var writer = new draw2d.io.json.Writer();
- writer.marshal(canvas, function(json){
-    // convert the json object into string representation
-    var jsonTxt = JSON.stringify(json,null,2);
-
-    // insert the json string into a DIV for preview or post
-    // it via ajax to the server....
-    // $("#json").text(jsonTxt);
-    console.log(jsonTxt);
- });
- </script> -->
-
+    <SCRIPT src="../../../src/draw2d.js"></SCRIPT>
+    <SCRIPT src="../../../src/Canvas.js"></SCRIPT>
 
 <script type="text/javascript">
 
-var canvas;
-
 $(window).load(function () {
 
-  canvas = new draw2d.Canvas("gfx_holder");
+
+  var canvas = new draw2d.Canvas("gfx_holder");
 
   canvas.add( new draw2d.shape.basic.Oval(),100,100);
   canvas.add( new draw2d.shape.basic.Rectangle(),120,150);
@@ -64,25 +40,16 @@ $(window).load(function () {
   canvas.add( new draw2d.shape.node.End(), 150,150);
   canvas.add( new draw2d.shape.node.End(), 350,250);
 
-
-
 });
 
-$("#test_button").click(function(){
-    console.log('here');
-  var writer = new draw2d.io.json.Writer();
-  writer.marshal(canvas, function(json){
-    // convert the json object into string representation
-    var jsonTxt = JSON.stringify(json,null,2);
-
-    // insert the json string into a DIV for preview or post
-    // it via ajax to the server....
-    // $("#json").text(jsonTxt);
-    console.log(jsonTxt);
-  });
-
-})
-
 </script>
+
+</head>
+
+<body>
+<div  onselectstart="javascript:/*IE8 hack*/return false" id="gfx_holder" style="width:1500px; height:1500px;">
+</div>
+
+
 </body>
 </html>
